@@ -1,0 +1,30 @@
+<div class="container">
+  <br>
+
+  <%= link_to "Upload new file", new_secure_file_path %>
+  <br>
+  <br>
+
+  <table border="3">
+    <thead>
+    <tr>
+      <th>File Name</th>
+      <th>Download Link</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @secure_files.each do |secure_file| %>
+
+      <tr>
+        <td><%= secure_file.name %></td>
+        <td><%= link_to "Download", secure_file.attachment_url %></td>
+        <td><%= link_to "Delete",  secure_file, method: :delete, confirm: "Are you sure you want to delete #{secure_file.name}?" %></td>
+      </tr>
+
+    <% end %>
+    </tbody>
+
+  </table>
+</div>

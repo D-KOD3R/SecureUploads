@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200626153621) do
+ActiveRecord::Schema.define(version: 20200626161628) do
+
+  create_table "secure_files", force: :cascade do |t|
+    t.string "name"
+    t.string "attachment"
+    t.string "guid"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guid"], name: "index_secure_files_on_guid", unique: true
+    t.index ["user_id"], name: "index_secure_files_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
