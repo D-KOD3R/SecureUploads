@@ -3,22 +3,58 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+# Builder Now backend
 
-* Ruby version
+## Table of contents
 
-* System dependencies
+* Dependencies
+* Set up
+* Contributing
+* User verification
 
-* Configuration
+## Dependencies
 
-* Database creation
+* Ruby 2.6.3
+* Rails 5.1.1
+* Database: Sqlite3
 
-* Database initialization
+## Set up.
 
-* How to run the test suite
+* Install sql server
 
-* Services (job queues, cache servers, search engines, etc.)
+* Clone the repo.
+```
+https://github.com/D-KOD3R/SecureUploads.git
+```    
 
-* Deployment instructions
+* Install dependencies
+```
+cd SecureUpload
+bundle install
+```
 
-* ...
+
+* Setup database.
+```
+rails db:setup
+```
+
+* User verification
+```
+rails console
+User.find_by(email: "/some email/").update(is_verified: true)
+```
+
+## Contributing
+
+In order to contribute, developer should follow following guidelines.
+* Take fresh pull from *master* branch.
+* Create a new branch with naming convention as:
+* fix/<fix_name> for a bug
+* chore/<chore_name> for a chore
+* feature/<feature_name> for new feature
+* Update your branches daily with *master* to prevent merge conflicts
+
+
+
+
