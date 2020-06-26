@@ -1,5 +1,6 @@
 class SecureFilesController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_authorization, only: [:create, :new]
 
   def index
     @secure_files = current_user.secure_files.all
@@ -30,4 +31,9 @@ class SecureFilesController < ApplicationController
   def secure_file_params
     params.require(:secure_file).permit(:name, :attachment)
   end
+
+  def check_authorization
+    redirect_to secure_files_path, notice: "Not allowed to perform this action, kindly ask admin to verify your account." unless current_user.is_verified?
+  end
+
 end
