@@ -1,3 +1,7 @@
 
+<% if user_signed_in? %>
+  <%= link_to "Goto Homepage", root_path %>
+<% end %>
+
 <p>Here is your download link, kindly do not share it with anyone.</p>
-<%= link_to "Download", @link.url %>
+<td><%= link_to "Download", @link.url %></td>

@@ -8,7 +8,7 @@ class SecureFile < ApplicationRecord
   validates :name, :attachment, presence: true # Make sure the owner's name is present.
 
   #callbacks
-  before_save :generate_tyny_url
+  before_create :generate_tyny_url
   after_commit :remove_attachment!, on: :destroy
 
   # associations
@@ -17,11 +17,11 @@ class SecureFile < ApplicationRecord
   private
 
   def generate_tyny_url
-    self.tiny_url = TinyUrl.shorten(file_url, self.guid)
+    self.tiny_url = TinyUrl.shorten(file_url)
   end
 
   def file_url
-    return self.attachment_url
+    return "/uploads/secure_file/attachment/#{self.guid}/#{self.attachment.filename}"
   end
 end
 
